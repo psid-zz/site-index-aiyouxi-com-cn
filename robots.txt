@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://psid-zz.github.io/site-index-aiyouxi-com-cn/sitemap.xml

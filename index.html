@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 – 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafafa;
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+            line-height: 1.7;
+            color: #1e1e1e;
+            padding: 2.5rem 1rem;
+        }
+
+        .page-wrap {
+            max-width: 740px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03);
+            padding: 2.8rem 2.2rem;
+        }
+
+        @media (max-width: 520px) {
+            .page-wrap {
+                padding: 2rem 1.2rem;
+                border-radius: 20px;
+            }
+        }
+
+        /* hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            background: #eef4ff;
+            border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            color: #2563eb;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #5b5b5b;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* 标题层级 */
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #eaeef5;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 1.6rem 0 0.6rem 0;
+            color: #1f2937;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        @media (max-width: 540px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: #f6f8fc;
+            border-radius: 20px;
+            padding: 1.4rem 1.3rem;
+            transition: background 0.2s;
+        }
+
+        .card:hover {
+            background: #eef2f9;
+        }
+
+        .card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #111827;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 0.2rem;
+            line-height: 1.6;
+        }
+
+        .card .card-tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+        }
+
+        /* 适合人群卡片 */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1rem;
+            margin: 1.2rem 0 0.8rem 0;
+            list-style: none;
+        }
+
+        .audience-list li {
+            background: #f0f3f7;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .audience-list li::before {
+            content: "▹";
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* 自然链接段落 */
+        .link-block {
+            background: #f9fafb;
+            border-left: 4px solid #2563eb;
+            padding: 1.4rem 1.6rem;
+            border-radius: 0 16px 16px 0;
+            margin: 1.8rem 0 1.2rem 0;
+        }
+
+        .link-block a {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .link-block a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* faq 紧凑 */
+        .faq-item {
+            margin-top: 1.2rem;
+            padding: 0.2rem 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            color: #4b5563;
+            font-size: 0.9rem;
+            margin-left: 0.2rem;
+        }
+
+        .footnote {
+            margin-top: 2.8rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            text-align: center;
+            letter-spacing: 0.2px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #edf2f7;
+            margin: 1.8rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- hero -->
+    <div class="hero">
+        <div class="hero-icon">🎮</div>
+        <h1>爱游戏</h1>
+        <p>一个专注于游戏信息整合与可信导航的内容站点，帮你快速找到值得关注的游戏世界入口。</p>
+    </div>
+
+    <!-- 介绍卡片：站点定位与可信说明 -->
+    <h2>站点介绍 · 可信说明</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4>📌 信息整合</h4>
+            <p>我们收集、整理与游戏相关的优质资源与信息，不做下载或破解，只做可靠的信息索引。</p>
+            <span class="card-tag">非官方 · 独立站点</span>
+        </div>
+        <div class="card">
+            <h4>⚖️ 可信原则</h4>
+            <p>所有链接与介绍均经过基础核实，不收录存疑或违规内容，保持内容透明。</p>
+            <span class="card-tag">定期复查</span>
+        </div>
+    </div>
+
+    <!-- 用途卡片：围绕爱游戏的具体场景 -->
+    <h2>主要用途</h2>
+    <div class="card-grid">
+        <div class="card">
+            <h4>🔍 快速发现</h4>
+            <p>通过分类与推荐，节省自己到处搜索的时间，一站看到不同游戏的轮廓。</p>
+        </div>
+        <div class="card">
+            <h4>🧭 导航指引</h4>
+            <p>从站点出发，直接到达感兴趣的游戏社区、资料站或官方页面。</p>
+        </div>
+        <div class="card">
+            <h4>📋 参考对比</h4>
+            <p>阅读简洁的介绍，横向比较不同游戏的特点与受众，辅助决策。</p>
+        </div>
+        <div class="card">
+            <h4>🔐 安全浏览</h4>
+            <p>只收录公开、合法的内容，避免误入广告或钓鱼页面，更放心。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群（列表） -->
+    <h2>适合人群</h2>
+    <ul class="audience-list">
+        <li>游戏入门玩家</li>
+        <li>寻找新游戏的探索者</li>
+        <li>希望回顾经典作品的爱好者</li>
+        <li>对游戏文化感兴趣的读者</li>
+    </ul>
+    <p style="color:#4b5563; font-size:0.9rem; margin-top:0.2rem;">无论你是轻度娱乐还是资深玩家，这里都提供清晰、克制的参考。</p>
+
+    <!-- 自然链接段落（嵌入爱游戏链接，无多余引导词） -->
+    <div class="link-block">
+        <p style="margin-bottom:0.3rem;"><strong>关于本页与主站</strong></p>
+        <p>此介绍页是 <a href="https://site-index-aiyouxi.com.cn">爱游戏</a> 的一部分，你可以在主站找到更完整的分类与信息。我们保持小团队维护，内容会持续补充与修正，如果有任何建议或疑问，欢迎通过站内渠道反馈。</p>
+    </div>
+
+    <!-- FAQ 摘要 + 可信说明延续 -->
+    <h2>常见疑问 · 简要说明</h2>
+    <div class="faq-item">
+        <strong>爱游戏是官方吗？</strong>
+        <p>不是。这是一个独立的兴趣站点，与任何游戏公司或发行商无直接隶属关系。我们仅提供信息整合与导航，不代理任何商业服务。</p>
+    </div>
+    <div class="faq-item">
+        <strong>信息可靠吗？</strong>
+        <p>每条收录都经过基础验证，但游戏世界变化很快，建议你同时参考官方来源。若发现错误，欢迎指正，我们会及时更新。</p>
+    </div>
+    <div class="faq-item">
+        <strong>站点会推广付费内容吗？</strong>
+        <p>目前没有广告或推广合作。所有推荐均基于内容本身，不收取费用。未来若有变化会明确标识。</p>
+    </div>
+
+    <hr>
+
+    <!-- 收尾：再次自然呼应，但不重复链接 -->
+    <p style="color:#6b7280; font-size:0.9rem; text-align:center; line-height:1.6;">
+        在 <a href="https://site-index-aiyouxi.com.cn" style="color:#2563eb; text-decoration:none; border-bottom:1px solid #2563eb;">爱游戏</a> 中，你可以找到更多游戏分类与介绍。我们坚持小而精的记录方式，希望每一次浏览都有实在的收获。
+    </p>
+
+    <div class="footnote">
+        © 爱游戏 · 信息导航 · 仅供个人参考
+    </div>
+</div>
+</body>
+</html>
