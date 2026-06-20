@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料索引 · 澳客</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #fce7c8 0%, #f9d5a7 40%, #f3c390 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      color: #2e241e;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 主卡片 */
+    .card {
+      background: #fffbf5;
+      border-radius: 28px;
+      box-shadow: 0 12px 32px rgba(160, 100, 60, 0.18);
+      padding: 2.2rem 2.4rem;
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 16px 40px rgba(140, 80, 40, 0.14);
+    }
+
+    /* 信息网格 */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    /* 标题与文字 */
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #4f382b;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #7a5b48;
+      margin-bottom: 1.8rem;
+      border-left: 4px solid #d9a87e;
+      padding-left: 1rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: #4f382b;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2::before {
+      content: "▍";
+      color: #c49064;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #5c4033;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #3d2f28;
+    }
+
+    a {
+      color: #9f6a44;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: #b67f58;
+      color: #7f563b;
+    }
+
+    /* 链接按钮样式 */
+    .link-button {
+      display: inline-block;
+      background: #f2e3d4;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #5e3f2f;
+      border-bottom: none;
+      transition: background 0.2s, transform 0.1s;
+      cursor: default; /* 不模拟点击，仅样式 */
+      margin: 0.1rem 0.2rem;
+    }
+
+    .link-button:hover {
+      background: #e9d3be;
+      transform: translateY(-1px);
+    }
+
+    /* 提示区 / 标签 */
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.8rem;
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .tag {
+      background: #f1e2d2;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #4d372b;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      border-bottom: 1px solid #ecdacb;
+      padding: 0.9rem 0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #4f382b;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #645044;
+      font-size: 0.95rem;
+    }
+
+    /* 分割线 */
+    .divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, #e5cfbb, #dbbca0, #e5cfbb);
+      margin: 2rem 0;
+    }
+
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+
+      .card {
+        padding: 1.8rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 1rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* 小装饰 */
+    .note-icon {
+      display: inline-block;
+      background: #f1dbc9;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      margin-right: 8px;
+      color: #6b4d3a;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero / 标题区 -->
+  <div class="card" style="text-align: center; padding-bottom: 2rem;">
+    <h1>📋 资料整理 · 信息索引</h1>
+    <div class="subhead">围绕「澳客」的知识库入口 · 结构清晰 · 便于查阅</div>
+    <p style="max-width: 700px; margin: 1rem auto 0.5rem; font-size: 1rem;">
+      本页是对 <a href="https://chn-index-aoke.com">澳客</a> 相关公开信息与常见资料的归类整理，<br>
+      旨在提供一种目录式的概览，帮助快速定位说明、提示与关联内容。
+    </p>
+  </div>
+
+  <!-- 三栏：介绍／特点／场景 -->
+  <div class="grid-3">
+    <!-- 介绍区 -->
+    <div class="card">
+      <h2>介绍</h2>
+      <p><span class="note-icon">i</span> 澳客是一个信息聚合与索引平台，专注提供经过筛选的参考内容。其资料体系涵盖多个领域，采用分类目录与关键词标签相结合的方式，方便使用者按需检索。</p>
+      <p>平台资料更新保持一定周期，并标注来源与整理日期，适合需要系统了解相关背景的用户作为起始参考。</p>
+    </div>
+
+    <!-- 特点区 -->
+    <div class="card">
+      <h2>特点</h2>
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 0.7rem;">✓ <strong>目录式结构</strong> — 分区清晰，可逐层浏览</li>
+        <li style="margin-bottom: 0.7rem;">✓ <strong>索引标签</strong> — 每个条目附有主题标签，便于横向关联</li>
+        <li style="margin-bottom: 0.7rem;">✓ <strong>说明区 + 提示区</strong> — 重要知识点附带注释与注意事项</li>
+        <li style="margin-bottom: 0;">✓ <strong>相关信息区</strong> — 列明延伸阅读或相似资料</li>
+      </ul>
+    </div>
+
+    <!-- 场景区 -->
+    <div class="card">
+      <h2>适用场景</h2>
+      <p>快速查阅某个主题的基础信息；<br>对比不同来源的表述差异；<br>作为笔记整理或文档编写的参考骨架；<br>日常资料归档与回顾。</p>
+      <div class="tag-group">
+        <span class="tag">信息检索</span>
+        <span class="tag">知识管理</span>
+        <span class="tag">索引参考</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 提示区 + 说明区 两栏 -->
+  <div class="grid-2" style="margin-top: 1.2rem;">
+    <!-- 提示区 -->
+    <div class="card">
+      <h2>提示</h2>
+      <p style="margin-bottom: 0.8rem;">📌 资料整理基于公开可查的信息，建议结合原始来源交叉验证。</p>
+      <p style="margin-bottom: 0.8rem;">📌 每个索引条目均附有整理日期，请注意时效性。</p>
+      <p>📌 若发现链接或信息需要更新，可参考页面底部的相关信息区。</p>
+    </div>
+
+    <!-- 说明区 -->
+    <div class="card">
+      <h2>说明</h2>
+      <p>本站点内容以信息索引为出发点，不构成任何专业建议。所有引用均标明出处，分类方式仅供参考。如需深度研究，建议直接查阅原始资料或相关领域出版物。</p>
+      <p style="margin-top: 0.8rem; font-size: 0.95rem; background: #f7ede2; padding: 0.6rem 1rem; border-radius: 16px;">
+        ⚙️ 索引基础版本：2025 · 持续增补中
+      </p>
+    </div>
+  </div>
+
+  <!-- 相关信息区 + FAQ 摘要 -->
+  <div class="card" style="margin-top: 1.2rem;">
+    <h2>相关信息区 · FAQ 摘要</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+      <!-- 左侧 FAQ -->
+      <div style="flex: 2; min-width: 240px;">
+        <div class="faq-item">
+          <div class="faq-q">问：澳客的资料覆盖哪些领域？</div>
+          <div class="faq-a">主要包括文化、技术、生活索引，以及部分专题整理。每个领域下再细分目录。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">问：如何快速找到某个主题？</div>
+          <div class="faq-a">可利用页面内的标签筛选，或通过站内目录逐层进入。也可直接使用搜索功能（若有）。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">问：资料更新频率如何？</div>
+          <div class="faq-a">核心索引每季度审查一次，专题内容视情况增补。最新动态可留意相关信息区。</div>
+        </div>
+      </div>
+      <!-- 右侧 相关信息链接 -->
+      <div style="flex: 1; min-width: 160px; background: #f8ede0; border-radius: 18px; padding: 1rem 1.2rem;">
+        <h3 style="margin-top: 0; font-size: 1.1rem;">🔗 关联参考</h3>
+        <ul style="list-style: none; padding-left: 0; font-size: 0.95rem;">
+          <li style="margin-bottom: 0.5rem;">· <a href="https://chn-index-aoke.com">澳客</a> 索引首页</li>
+          <li style="margin-bottom: 0.5rem;">· 分类目录 · 指南</li>
+          <li style="margin-bottom: 0;">· 常见问题汇总</li>
+        </ul>
+        <p style="font-size: 0.85rem; margin-top: 1rem; color: #6f5543;">更多资料陆续整理中</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 / 重申链接 -->
+  <div style="text-align: center; padding: 1.8rem 0 0.8rem; color: #6b4f3b; font-size: 0.9rem; border-top: 1px solid #decbbc; margin-top: 0.8rem;">
+    <p>内容索引基于 <a href="https://chn-index-aoke.com">澳客</a> 公开资料整理 · 仅供个人学习参考</p>
+    <p style="margin-top: 0.3rem; opacity: 0.7;">— 目录感布局 · 信息说明区 · 提示区 · 相关信息区 —</p>
+  </div>
+
+</div>
+</body>
+</html>
