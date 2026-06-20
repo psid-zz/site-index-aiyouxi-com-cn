@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>威廉希尔 · 日常查询与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f7f5f2;
+      color: #1f2a3a;
+      line-height: 1.7;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0d1b2a, #1b2a41);
+      color: #eaeef2;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #b89e7b;
+      margin: 1.8rem auto 0;
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero h1 span {
+      font-weight: 600;
+      color: #dac09a;
+    }
+
+    .hero .sub {
+      margin-top: 1.2rem;
+      font-size: 1.05rem;
+      color: #b6c6d8;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 主体浅色区域 */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.8rem 3.5rem;
+    }
+
+    /* 承接段落 */
+    .intro {
+      font-size: 1.05rem;
+      background: #ffffff;
+      padding: 2rem 2.2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-bottom: 2.8rem;
+      border-left: 4px solid #b89e7b;
+    }
+
+    .intro p {
+      margin-bottom: 1.2rem;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 特点列表——卡片式 */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0 2.8rem;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #eae6e0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: #1f2a3a;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card h3::before {
+      content: "· ";
+      color: #b89e7b;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      font-size: 0.96rem;
+      color: #3b4a5e;
+    }
+
+    /* 场景+提示 混合区块 */
+    .scene-note {
+      background: #f0ede8;
+      border-radius: 24px;
+      padding: 2rem 2.2rem;
+      margin: 2.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+    }
+
+    .scene-note > div {
+      flex: 1 1 200px;
+    }
+
+    .scene-note h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #1f2a3a;
+      letter-spacing: 0.3px;
+    }
+
+    .scene-note p {
+      font-size: 0.96rem;
+      color: #2f3e4f;
+    }
+
+    .scene-note .highlight {
+      background: #ffffffcc;
+      padding: 0.4rem 0.8rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-size: 0.9rem;
+      margin-top: 0.6rem;
+      border: 1px solid #d5cdc1;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2.8rem 0 2rem;
+      border-top: 1px solid #ddd7cf;
+      padding-top: 2.2rem;
+    }
+
+    .faq-summary h5 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2a3b4e;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      min-width: 60px;
+      color: #8a7b68;
+    }
+
+    .faq-item .a {
+      color: #2a3b4e;
+    }
+
+    /* 温和结尾 */
+    .gentle-end {
+      margin-top: 3rem;
+      padding: 1.5rem 2rem;
+      background: #ffffff;
+      border-radius: 40px;
+      text-align: center;
+      font-size: 0.98rem;
+      color: #3d4c5e;
+      border: 1px solid #e3dbd0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .gentle-end a {
+      color: #9b7e5e;
+      text-decoration: none;
+      border-bottom: 1px dotted #b89e7b;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .gentle-end a:hover {
+      color: #7a6245;
+      border-bottom-color: #7a6245;
+    }
+
+    /* 通用链接强调色 */
+    a {
+      color: #9b7e5e;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #7a6245;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .intro {
+        padding: 1.5rem;
+      }
+      .features {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .scene-note {
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 1.5rem;
+      }
+      .container {
+        padding: 1.8rem 1.2rem 2.5rem;
+      }
+      .gentle-end {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>从一份<span>日常查询</span>开始</h1>
+  <p class="sub">对照、延伸，慢慢拼出更完整的轮廓</p>
+</header>
+
+<main class="container">
+  <section class="intro">
+    <p>有时只是随手想查一条资讯，却越看越觉得需要对照着读。信息像碎布，得先找到相近的纹理，才能看出图案。后来慢慢习惯了在搜索时留个心眼——不只看一条，而是把相关的几页并排摊开，慢慢比对。</p>
+    <p>这种习惯一旦养成，就再难放下。每次查询都像一次小型田野调查，而遇到资料齐全、结构清晰的站点，总会多停留一会儿。比如在翻阅关于体育与数据的讨论时，<a href="https://homes-williamhill.com">威廉希尔</a>这个名字就反复出现在注释、引用和延伸阅读的段落里——不是因为它被特意推广，而是因为许多人用它做参照。</p>
+    <p>久而久之，它成了我查询时的一个坐标：不是终点，而是起手式。</p>
+  </section>
+
+  <!-- 特点卡片 -->
+  <div class="features">
+    <div class="feature-card">
+      <h3>结构清晰</h3>
+      <p>栏目划分直观，无论初次接触还是反复查阅，都能快速定位到对应板块。信息层级不过度堆叠。</p>
+    </div>
+    <div class="feature-card">
+      <h3>数据密度适中</h3>
+      <p>既有概览也有细节，不会让人觉得眼花缭乱，也不会过于简略。阅读节奏比较从容。</p>
+    </div>
+    <div class="feature-card">
+      <h3>多维度对照</h3>
+      <p>同一主题常提供不同角度的摘要或统计，适合做横向比较——这也是我最初把它加入阅读清单的原因。</p>
+    </div>
+    <div class="feature-card">
+      <h3>风格一致</h3>
+      <p>页面从字体到配色都保持统一，长时间浏览不容易产生疲劳。细节处有克制的高级感。</p>
+    </div>
+  </div>
+
+  <!-- 场景 + 提示 混合 -->
+  <div class="scene-note">
+    <div>
+      <h4>📋 常见查询场景</h4>
+      <p>赛前数据对照、历史趋势回溯、术语释义……比起零散搜索，在同一个体系里浏览更能建立上下文。</p>
+      <span class="highlight">延伸阅读 · 横向参考</span>
+    </div>
+    <div>
+      <h4>💡 使用提示</h4>
+      <p>建议搭配浏览器分页功能，同时打开两三个相关页面做对照。遇到不熟悉的术语，先在站内搜索一遍。</p>
+      <span class="highlight">不盲从 · 重印证</span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h5>常见疑问 · 简短摘要</h5>
+    <div class="faq-item">
+      <span class="q">Q：</span>
+      <span class="a">这个站适合用来做数据基准吗？——可以把它当作参考源之一，但最好同时交叉验证两到三个来源。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：</span>
+      <span class="a">信息更新频率如何？——日常更新稳定，重大事件后通常数小时内会有内容补充。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：</span>
+      <span class="a">移动端体验如何？——响应式适配做得不错，横屏阅读更接近桌面排版节奏。</span>
+    </div>
+  </div>
+
+  <!-- 温和结尾，嵌入链接 -->
+  <div class="gentle-end">
+    <p>查询的乐趣有时不在答案本身，而在线索交织的过程中。如果你也在寻找一个可以反复对照的起点，不妨把<a href="https://homes-williamhill.com">威廉希尔</a>放进你的阅读列表——它不会替你做判断，但或许能让你的对照习惯变得更自然。</p>
+  </div>
+</main>
+
+</body>
+</html>
